@@ -1,5 +1,13 @@
 # CHANGELOG — 한입당 (HANNIPDANG)
 
+## v0.6 — 2026-09-15 (리뷰 반영: 성능·SEO)
+- **히어로 부제 줄바꿈 수정**: max-width 32ch→min(92vw,34rem) + word-break:keep-all + text-wrap:balance. "카/페." 깨짐 해소.
+- **이미지 lazy 로딩**: below-fold 13장에 `loading="lazy"` 추가(above-fold 3장=헤더로고·히어로 마스코트·히어로 사진만 eager). 모바일·LCP 개선.
+- **JSON-LD 추가**: `Bakery` 스키마(name·description·telephone·address·servesCuisine·hasMap·sameAs 3채널). openingHours는 오픈 시각 미확보로 제외(무근거 기입 방지).
+- ⚠️**보류(도메인 인계 확정 후)**: og:image 절대경로화·og:url·canonical. 확정 시 3줄 동시 추가 예정(파이프라인 템플릿 표준화 권장).
+- 참고: Dongle 헤딩이 '쫀·뚱' 등 일부 글리프를 Pretendard로 폴백(사용자 확인, 미관 경미)—현행 유지. 시그니처 카드 제목은 h3=Pretendard라 원래 폴백 무관.
+- QA: lazy 13/16·JSON-LD 유효·태그균형·이모지0 통과.
+
 ## v0.5 — 2026-09-15 (사용자 추가 이미지 반영)
 - 사용자가 img/에 새 이미지 ~150장 추가 → 신규 배치 컨택트시트 전수 확인.
 - **베이글샌드 실물 확보**: 시그니처 01 베이글샌드 브랜드 타일 → **실사진 hp-bagel(딸기·피스타치오 단면)** 교체(+NEW 배지 오버레이 유지). 갤러리에 hp-bagel-cream(딸기·팥모찌)·hp-bagel-oreo 2컷 추가.
