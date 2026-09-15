@@ -20,7 +20,7 @@
 <!-- Fonts (시안: CDN · 납품 시 self-host 예정) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 
 <style>
@@ -43,9 +43,10 @@
   --ink-soft:   #6E5560;   /* 보조 텍스트 */
   --line:       #EED2DA;   /* 구분선 */
   /* type */
-  --sans:  "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --serif: var(--sans);              /* 모던 산세리프 헤딩 */
-  --hand:  "Gaegu", var(--sans), cursive;
+  --sans:    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --serif:   var(--sans);              /* 소제목·UI = Pretendard */
+  --display: "Dongle", var(--sans);    /* 큰 헤딩(h1/h2) = 둥근 버블 */
+  --hand:    "Gaegu", var(--sans), cursive;
   /* metrics */
   --maxw: 1120px;
   --gut: clamp(20px, 5vw, 56px);
@@ -75,6 +76,7 @@ a{ color:inherit; text-decoration:none; }
 .serif{ font-family:var(--serif); }
 .hand{ font-family:var(--hand); }
 h1,h2,h3{ font-family:var(--serif); font-weight:800; line-height:1.26; letter-spacing:-.035em; margin:0; }
+h1,h2{ font-family:var(--display); font-weight:700; line-height:1.02; letter-spacing:0; }
 
 .kick{
   font-family:var(--hand);
@@ -88,7 +90,7 @@ h1,h2,h3{ font-family:var(--serif); font-weight:800; line-height:1.26; letter-sp
 .wrap{ max-width:var(--maxw); margin:0 auto; padding-inline:var(--gut); }
 section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
 .sec-head{ text-align:center; max-width:640px; margin:0 auto clamp(38px,6vw,60px); }
-.sec-head h2{ font-size:clamp(1.8rem, 5.2vw, 2.8rem); margin:.3em 0 .35em; }
+.sec-head h2{ font-size:clamp(2.4rem, 6.6vw, 3.7rem); margin:.2em 0 .28em; }
 .sec-head p{ color:var(--ink-soft); font-size:1.02rem; margin:0; }
 
 /* ---------- buttons ---------- */
@@ -153,7 +155,7 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
 .hero .wrap{ position:relative; z-index:1; }
 .hero-mascot{ width:clamp(84px,17vw,120px); height:auto; margin:0 auto 1.1rem; animation:bob 3.6s ease-in-out infinite; }
 @keyframes bob{ 0%,100%{ transform:translateY(0) rotate(-3deg);} 50%{ transform:translateY(-10px) rotate(3deg);} }
-.hero h1{ font-size:clamp(2.5rem, 8.5vw, 4.7rem); line-height:1.14; margin:0 0 .3em; }
+.hero h1{ font-size:clamp(3.4rem, 11vw, 6.2rem); line-height:.96; margin:0 0 .28em; }
 .hero h1 em{ font-style:normal; color:var(--red); }
 .hero-sub{ font-size:clamp(1.05rem,2.7vw,1.32rem); color:var(--ink-soft); max-width:32ch; margin:0 auto 1.9rem; }
 .hero-cta{ display:flex; gap:.7rem; justify-content:center; flex-wrap:wrap; }
@@ -174,7 +176,7 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
 .intro{ background:var(--blush-deep); }
 .intro-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(30px,5vw,64px); align-items:center; }
 .intro-copy .kick{ display:block; margin-bottom:.5rem; }
-.intro-copy h2{ font-size:clamp(1.7rem,4.6vw,2.5rem); margin-bottom:.6em; }
+.intro-copy h2{ font-size:clamp(2.3rem,6vw,3.3rem); margin-bottom:.45em; }
 .intro-copy p{ color:var(--ink-soft); margin:0 0 1.1em; font-size:1.05rem; }
 .intro-copy p strong{ color:var(--pink-deep); font-weight:700; }
 .intro-photo{ border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); border:6px solid var(--cream); transform:rotate(1.4deg); }
@@ -221,7 +223,7 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
 }
 .howto-head{ text-align:center; margin-bottom:clamp(28px,5vw,44px); }
 .howto-head .kick{ display:block; margin-bottom:.4rem; }
-.howto-head h2{ font-size:clamp(1.6rem,4.4vw,2.4rem); }
+.howto-head h2{ font-size:clamp(2.2rem,5.8vw,3.2rem); }
 .howto-head p{ color:var(--ink-soft); margin:.5em auto 0; max-width:44ch; }
 .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,2.6vw,26px); counter-reset:step; }
 .step{ text-align:center; }
@@ -420,7 +422,7 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
   <div class="wrap visit-grid">
     <div class="visit-info reveal">
       <span class="kick">Visit</span>
-      <h2 style="font-size:clamp(1.7rem,4.6vw,2.5rem);margin:.3em 0 .8em">오시는 길</h2>
+      <h2 style="font-size:clamp(2.3rem,6vw,3.3rem);margin:.2em 0 .55em">오시는 길</h2>
       <dl>
         <dt>주소</dt><dd>강원 춘천시 가연길16번길 7, 1층<small>소양119안전센터(소방서) 맞은편 좁은 골목 · 천일택배·바이크월드 사이</small></dd>
         <dt>영업</dt><dd>19:00 종료<small>재료 소진 시 조기 마감될 수 있어요</small></dd>
