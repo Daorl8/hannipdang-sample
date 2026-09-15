@@ -20,7 +20,7 @@
 <!-- Fonts (시안: CDN · 납품 시 self-host 예정) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 
 <style>
@@ -43,14 +43,14 @@
   --ink-soft:   #6E5560;   /* 보조 텍스트 */
   --line:       #EED2DA;   /* 구분선 */
   /* type */
-  --serif: "Gowun Batang", serif;
-  --hand:  "Gaegu", "Gowun Batang", cursive;
   --sans:  "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --serif: var(--sans);              /* 모던 산세리프 헤딩 */
+  --hand:  "Gaegu", var(--sans), cursive;
   /* metrics */
   --maxw: 1120px;
   --gut: clamp(20px, 5vw, 56px);
-  --radius: 22px;
-  --radius-lg: 34px;
+  --radius: 0px;
+  --radius-lg: 0px;
   --shadow: 0 18px 46px -22px rgba(180, 90, 120, .40);
   --shadow-soft: 0 10px 30px -18px rgba(180, 90, 120, .34);
 }
@@ -74,7 +74,7 @@ a{ color:inherit; text-decoration:none; }
 /* ---------- shared type ---------- */
 .serif{ font-family:var(--serif); }
 .hand{ font-family:var(--hand); }
-h1,h2,h3{ font-family:var(--serif); font-weight:700; line-height:1.28; letter-spacing:-.02em; margin:0; }
+h1,h2,h3{ font-family:var(--serif); font-weight:800; line-height:1.26; letter-spacing:-.035em; margin:0; }
 
 .kick{
   font-family:var(--hand);
@@ -96,7 +96,7 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
   --bg:var(--red); --fg:#fff;
   display:inline-flex; align-items:center; gap:.5em;
   font-family:var(--sans); font-weight:700; font-size:1rem;
-  padding:.9em 1.6em; border-radius:999px;
+  padding:.9em 1.6em; border-radius:0;
   background:var(--bg); color:var(--fg);
   border:2px solid var(--bg);
   transition:transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s, background .2s;
@@ -136,7 +136,8 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
 .nav{ display:flex; align-items:center; gap:clamp(14px,2.4vw,30px); }
 .nav a{ font-size:.96rem; font-weight:600; color:var(--ink-soft); transition:color .2s; }
 .nav a:hover{ color:var(--red); }
-.nav .btn{ padding:.6em 1.15em; font-size:.92rem; }
+.nav a.btn{ padding:.6em 1.15em; font-size:.92rem; color:#fff; }
+.nav a.btn:hover{ color:#fff; }
 .nav-toggle{ display:none; }
 @media (max-width:820px){
   .nav a:not(.btn){ display:none; }
@@ -165,7 +166,7 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
 .hero-figure img{ width:100%; aspect-ratio:16/11; object-fit:cover; transition:transform 7s ease; }
 .hero-figure:hover img{ transform:scale(1.06); }
 .hero-tags{ display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap; margin-top:1.6rem; }
-.tag{ font-family:var(--hand); font-size:1.02rem; color:var(--pink-deep); background:var(--cream); border:1.5px solid var(--line); border-radius:999px; padding:.3em 1em; }
+.tag{ font-family:var(--hand); font-size:1.02rem; color:var(--pink-deep); background:var(--cream); border:1.5px solid var(--line); border-radius:0; padding:.3em 1em; }
 
 /* ============================================================
    INTRO
@@ -204,13 +205,11 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
    GALLERY
    ============================================================ */
 .gallery{ background:var(--blush-deep); }
-.gal-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(12px,2vw,18px); }
+.gal-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,2vw,18px); }
 .gal-grid figure{ margin:0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-soft); background:var(--cream); }
 .gal-grid img{ width:100%; aspect-ratio:1/1; object-fit:cover; transition:transform 1s ease; }
 .gal-grid figure:hover img{ transform:scale(1.08); }
-.gal-grid figure:nth-child(3){ grid-row:span 2; }
-.gal-grid figure:nth-child(3) img{ aspect-ratio:1/2.06; }
-@media (max-width:820px){ .gal-grid{ grid-template-columns:repeat(2,1fr); } .gal-grid figure:nth-child(3){ grid-row:auto; } .gal-grid figure:nth-child(3) img{ aspect-ratio:1/1; } }
+@media (max-width:820px){ .gal-grid{ grid-template-columns:repeat(2,1fr); } }
 
 /* ============================================================
    HOW TO (베이글샌드 먹는법)
@@ -227,9 +226,9 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
 .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,2.6vw,26px); counter-reset:step; }
 .step{ text-align:center; }
 .step .dot{
-  width:56px; height:56px; margin:0 auto .8rem; border-radius:50%;
+  width:56px; height:56px; margin:0 auto .8rem; border-radius:0;
   background:var(--cream); color:var(--red); border:2px solid var(--red);
-  display:grid; place-items:center; font-family:var(--serif); font-weight:700; font-size:1.4rem;
+  display:grid; place-items:center; font-family:var(--serif); font-weight:800; font-size:1.4rem;
   counter-increment:step; box-shadow:0 8px 18px -10px rgba(229,50,46,.5);
 }
 .step .dot::before{ content:counter(step); }
@@ -308,7 +307,7 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
   <div class="wrap">
     <img class="hero-mascot" src="hp-logo.png" alt="한입당 하트 마스코트" width="120" height="120" />
     <h1 class="reveal">한입 가득,<br /><em>달콤함</em>을 담다</h1>
-    <p class="hero-sub reveal d1">춘천 작은 골목, 쫀득 베이글샌드와 두바이 디저트<br />그리고 한입 가득 뚱카롱을 만드는 곳.</p>
+    <p class="hero-sub reveal d1">춘천 작은 골목에 달콤함을 풍기는 가게,<br />쫀득 베이글샌드와 두바이 디저트로 유명해진 카페.</p>
     <div class="hero-cta reveal d2">
       <a class="btn" href="https://instagram.com/hannip_dang" target="_blank" rel="noopener">인스타 구경하기</a>
       <a class="btn ghost" href="tel:0507-1419-7040">전화 주문 0507-1419-7040</a>
@@ -332,12 +331,31 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
       <span class="kick">한입당 이야기</span>
       <h2>한입에 쏙,<br />기분 좋은 달콤함</h2>
       <p>한입당은 춘천 가연길 작은 골목에서 <strong>달콤한 향기</strong>를 풍기는 디저트 가게예요. 하나하나 손으로 만든 마카롱과 디저트를 한입 크기로 예쁘게 담아냅니다.</p>
-      <p>겉은 바삭하고 속은 크림 가득한 <strong>뚱카롱</strong>, 진한 <strong>두바이 디저트</strong>, 그리고 춘천에서 처음 선보이는 <strong>쫀득 베이글샌드</strong>까지 — 골라 먹는 재미가 있어요.</p>
+      <p>겉은 바삭하고 속은 크림 가득한 <strong>뚱카롱</strong>, 진한 <strong>두바이 디저트</strong>, 그리고 춘천에서 처음 선보이는 <strong>쫀득 베이글샌드</strong>까지, 달콤한 한 입을 만나보세요.</p>
       <p>기념일 선물, 작은 답례, 나를 위한 하루의 쉼표. 어떤 순간에도 어울리는 한입을 준비했습니다.</p>
     </div>
     <figure class="intro-photo reveal d2">
       <img src="hp-cup-strawberry.webp" alt="딸기 크림을 올린 한입당 컵 디저트" width="480" height="480" />
     </figure>
+  </div>
+</section>
+
+<!-- ============ HOW TO (쫀득 베이글샌드 · 신상 대표) ============ -->
+<section class="howto" id="howto">
+  <div class="wrap">
+    <div class="howto-band reveal">
+      <div class="howto-head">
+        <span class="kick">NEW · 춘천 최초</span>
+        <h2>쫀득 베이글샌드 6종</h2>
+        <p>쫀득한 베이글빵 사이에 케이크 크림을 가득 채워, 케이크처럼 즐기는 디저트. 타지에서 맛보고 반해 춘천에 직접 들여온 한입당의 자신작이에요.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="dot"></div><h4>예쁜 단면 담기</h4><p>빵 사이 가득 찬 크림, 이쁜 단면을 먼저 사진으로 남겨요.</p></div>
+        <div class="step reveal d1"><div class="dot"></div><h4>포장 한 겹 벗기기</h4><p>비닐을 한 겹 벗겨 단면이 아래로 오게 접시에 엎어 놓아요.</p></div>
+        <div class="step reveal d2"><div class="dot"></div><h4>삼등분으로 컷</h4><p>엎어 놓은 샌드를 삼등분해 칼로 잘라 맛있게 즐겨요.</p></div>
+        <div class="step reveal d3"><div class="dot"></div><h4>손으로 들려면</h4><p>냉동실에 20분! 요즘같이 따뜻한 날엔 접시에 두고 드시길 추천해요.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -351,19 +369,19 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
     </div>
     <div class="sig-grid">
       <article class="sig-card reveal">
-        <div class="ph"><img src="hp-ott-caramel.webp" alt="화이트초코와 캐러멜을 올린 뚱카롱" width="480" height="600" /></div>
+        <div class="ph"><img src="hp-dubai.webp" alt="한입당 두바이 디저트" width="480" height="600" /></div>
         <div class="sig-body">
           <span class="no">01</span>
-          <h3>한입 가득 뚱카롱</h3>
-          <p>겉은 바삭, 속은 크림이 가득 찬 뚱카롱. 캐러멜·딸기·황치즈·레드벨벳 등 매일 다른 맛이 준비돼요.</p>
+          <h3>두바이 디저트</h3>
+          <p>바삭하게 구운 카다이프와 진한 초코·피스타치오가 어우러진, 한입당을 유명하게 만든 대표 디저트.</p>
         </div>
       </article>
       <article class="sig-card reveal d1">
-        <div class="ph"><img src="hp-dubai.webp" alt="한입당 두바이 디저트" width="480" height="600" /></div>
+        <div class="ph"><img src="hp-ott-caramel.webp" alt="화이트초코와 캐러멜을 올린 뚱카롱" width="480" height="600" /></div>
         <div class="sig-body">
           <span class="no">02</span>
-          <h3>두바이 디저트</h3>
-          <p>바삭하게 구운 카다이프와 진한 초코·피스타치오가 어우러진, 요즘 가장 인기 있는 한입.</p>
+          <h3>한입 가득 뚱카롱</h3>
+          <p>겉은 바삭, 속은 크림이 가득 찬 뚱카롱. 캐러멜·딸기·황치즈·레드벨벳 등 매일 다른 맛이 준비돼요.</p>
         </div>
       </article>
       <article class="sig-card reveal d2">
@@ -389,28 +407,10 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
     <div class="gal-grid">
       <figure class="reveal"><img src="hp-ott-orange.webp" alt="오렌지 크림이 가득한 뚱카롱 단면" width="400" height="400" /></figure>
       <figure class="reveal d1"><img src="hp-ott-strawberry.webp" alt="딸기 크림 뚱카롱" width="400" height="400" /></figure>
-      <figure class="reveal d2"><img src="hp-ott-redvelvet.webp" alt="레드벨벳 하트 마카롱" width="400" height="820" /></figure>
+      <figure class="reveal d2"><img src="hp-ott-redvelvet.webp" alt="레드벨벳 하트 마카롱" width="400" height="400" /></figure>
+      <figure class="reveal"><img src="hp-ott-choco.webp" alt="진한 초콜릿 크림 뚱카롱" width="400" height="400" /></figure>
       <figure class="reveal d1"><img src="hp-ott-rainbow.webp" alt="무지개빛 마카롱 모음" width="400" height="400" /></figure>
       <figure class="reveal d2"><img src="hp-ott-oreo.webp" alt="오레오를 올린 뚱카롱" width="400" height="400" /></figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============ HOW TO (베이글샌드) ============ -->
-<section class="howto" id="howto">
-  <div class="wrap">
-    <div class="howto-band reveal">
-      <div class="howto-head">
-        <span class="kick">NEW · 춘천 최초</span>
-        <h2>쫀득 베이글샌드 즐기는 법</h2>
-        <p>쫀득한 베이글빵 사이에 케이크 크림을 가득 채운 신메뉴. 케이크처럼 잘라 드셔보세요.</p>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><div class="dot"></div><h4>단면부터 감상</h4><p>빵 사이 가득 찬 크림, 예쁜 단면을 먼저 눈으로 즐겨요.</p></div>
-        <div class="step reveal d1"><div class="dot"></div><h4>포장 한 겹 벗기기</h4><p>비닐을 한 겹 벗겨 단면이 위로 오게 접시에 살짝 엎어요.</p></div>
-        <div class="step reveal d2"><div class="dot"></div><h4>삼등분으로 컷</h4><p>칼로 세 조각 내면 케이크처럼 한입 크기로 즐길 수 있어요.</p></div>
-        <div class="step reveal d3"><div class="dot"></div><h4>손으로 들려면</h4><p>냉동실에 20분! 따뜻한 날씨엔 접시에 두고 드시길 추천해요.</p></div>
-      </div>
     </div>
   </div>
 </section>
@@ -429,7 +429,7 @@ section{ padding-block:clamp(60px, 11vw, 118px); position:relative; }
       <a class="btn" href="https://map.naver.com/p/entry/place/1693771707" target="_blank" rel="noopener">네이버 지도에서 보기</a>
     </div>
     <figure class="visit-photo reveal d2">
-      <img src="hp-gift-box.webp" alt="빨간 리본으로 묶은 한입당 마카롱 선물 박스" width="480" height="640" />
+      <img src="hp-visit.webp" alt="식물 곁에 놓인 빨간 리본 한입당 디저트 선물 박스" width="480" height="640" />
     </figure>
   </div>
 </section>
