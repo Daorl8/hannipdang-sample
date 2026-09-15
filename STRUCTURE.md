@@ -30,7 +30,7 @@
 
 ## 디자인 (모던 산세리프 큐트 — v0.2)
 - **팔레트**: 연분홍 바탕 `--blush #FCEDF0` · 살짝 진한 섹션 `--blush-deep #F7DCE3` · 크림 카드 `#FFFAFB` · 기본 진분홍 `--pink #E58BA5`/`--pink-deep #D96A8A` · **포인트 빨강 `--red #D6231F`(로고 하트, AA 보정)** · 잉크 플럼 `#3A2930` · 푸터 로즈 `--foot #A82F59`.
-- **폰트(시안=CDN)**: 헤딩 **Pretendard 800(모던 산세리프, 사용자 선택)** + Gaegu(개구, 손글씨 키커·포인트) + Pretendard(본문). ⚠️납품 시 서브셋 self-host 전환.
+- **폰트(시안=CDN)**: 큰 헤딩(h1·h2) **Dongle 700(둥근 버블, `--display`)** + 소제목·UI·본문 Pretendard(`--serif`=`--sans`) + Gaegu(손글씨 키커·포인트). ⚠️Dongle 단일 웨이트라 h1/h2 크기 1.3x·행간 타이트 보정, 소제목은 Pretendard 유지. 납품 시 서브셋 self-host.
 - **전 요소 직각(border-radius 0)** — 카드·버튼·태그·배지. 히어로 배경 blur 원형 장식만 원형. 넉넉한 여백, 소프트 그림자, 살짝 기울인 사진 프레임(rotate), 하트 마스코트 bob.
 - 자산 추가: `hp-ott-choco.webp`(갤러리 초코) · `hp-visit.webp`(628225031 라이프스타일, 오시는길). ⚠️`hp-gift-box.webp`(451762125=에그타르트 텍스트 편집사진)는 미참조 orphan.
 - 강제 리빌(IntersectionObserver + 2.6s 타임아웃 + noscript 폴백), rAF 강제 스무스 앵커 스크롤(헤더 오프셋 70px).
