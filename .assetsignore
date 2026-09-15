@@ -8,3 +8,7 @@ STRUCTURE.md
 img
 img/**
 _qa_*.png
+_ns_*.png
+_cs_*.png
+_ns_index.txt
+_cs_index.txt
